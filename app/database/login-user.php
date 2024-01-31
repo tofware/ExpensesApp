@@ -6,7 +6,6 @@ require("service.php");
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $created_at = date("Y-m-d");
 
     if(validateSize($username, 100)){
         redirectWithMessage('Username must have between 1 and 100 characters.', 'username');
@@ -16,18 +15,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         redirectWithMessage('Password must have between 1 and 100 characters.', 'password');
     }
 
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
     $connection = connectDefaultDatabase();
 
-    if ($statement->execute() === TRUE) {
+    $sql = "SELECT * FROM users WHERE username = ?";
+
+    $statement = $connection->prepare($sql);
+    $statement->bind_param("s", $username);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $user = $result->fetch_assoc();
+
+    if(password_verify($password, $user['password'])){
         session_start();
 
-        $_SESSION['message'] = 'The user was registered successfully. You can log in now.';
+        $_SESSION['logged_in'] = true;
+        $_SESSION['user_id'] = $user['id'];
 
         header('Location: http://localhost:63342/ExpensesApp/views/login.php');
-    } else {
-        $_SESSION['message'] = 'There is a problem with the database, please contact an administrator.';
+    }else{
+        redirectWithMessage('Datele sunt incorecte.', 'invalid');
     }
 
     disconnect($connection);

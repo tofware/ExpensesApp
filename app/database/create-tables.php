@@ -11,7 +11,7 @@ function createUsersTable()
 
     $sql = "CREATE TABLE IF NOT EXISTS users (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(100) NOT NULL,
+            username VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(100) NOT NULL,
             created_at DATE NOT NULL
             )";

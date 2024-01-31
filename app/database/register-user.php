@@ -33,9 +33,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $statement = $connection->prepare($sql);
     $statement->bind_param("sss", $username, $hashedPassword, $created_at);
 
-    if ($statement->execute() === TRUE) {
-        session_start();
+    try{
+        $result = $statement->execute();
+    }catch (Exception $exception){
+        redirectWithMessage('The username already exists.', 'username-unique');
+    }
 
+    session_start();
+
+    if ($result === TRUE) {
         $_SESSION['message'] = 'The user was registered successfully. You can log in now.';
 
         header('Location: http://localhost:63342/ExpensesApp/views/login.php');

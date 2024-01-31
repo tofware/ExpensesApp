@@ -1,9 +1,5 @@
 <?php
 
-require("connection.php");
-require("service.php");
-
-
 /**
  * @param $string
  * @param $maxSize

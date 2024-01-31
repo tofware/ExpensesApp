@@ -3,7 +3,7 @@
 <head>
     <?php
     include("includes/head-tag-content.php");
-    session_start();
+    include("includes/logged-in-check.php");
 
     function checkSession($field){
         if (!empty($_SESSION[$field])) {
@@ -24,6 +24,7 @@
                 <input class="d-block" type="text" id="username" name="username" required>
                 <?php
                     checkSession('username-message');
+                    checkSession('username-unique-message');
                 ?>
             </div>
             <div>
@@ -41,8 +42,12 @@
                     checkSession('password-matching-message');
                 ?>
             </div>
+            <div>
+                <a href="login.php">Already have an account</a>
+            </div>
             <button class="mt-3" type="submit">Register</button>
         </form>
+
     </div>
 </div>
 <?php include("includes/footer-tag-content.php") ?>
