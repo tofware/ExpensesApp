@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['logged_in'] = true;
         $_SESSION['user_id'] = $user['id'];
 
-        header('Location: http://localhost:63342/ExpensesApp/views/login.php');
+        header('Location: http://localhost:63342/ExpensesApp/views/dashboard.php');
     }else{
         redirectWithMessage('Datele sunt incorecte.', 'invalid');
     }
