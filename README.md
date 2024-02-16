@@ -8,4 +8,5 @@ Followed properties:
 * expenses can be made from categories
 * category and sub-category can be created and deleted
 * sub-category can be added for incomes and expenses
-* there will be a user that can login or see the entries
+* user can register
+* user can login and see the entries
