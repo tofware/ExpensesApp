@@ -8,11 +8,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_POST['password'];
 
     if(validateSize($username, 100)){
-        redirectWithMessage('Username must have between 1 and 100 characters.', 'username');
+        redirectWithMessage('Username must have between 4 and 100 characters.', 'username');
     }
 
     if(validateSize($password, 100)){
-        redirectWithMessage('Password must have between 1 and 100 characters.', 'password');
+        redirectWithMessage('Password must have between 4 and 100 characters.', 'password');
     }
 
     $connection = connectDefaultDatabase();

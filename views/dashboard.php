@@ -10,6 +10,11 @@
 <div class="h-100 d-flex align-items-center justify-content-center">
     <div class="d-flex flex-column card text-center custom-card">
         <h2>Incomes and Expenses</h2>
+        <div class="row align-items-center justify-content-center">
+            <a href="add-incomes.php" class="m-2">Add incomes</a>
+            <a href="main-categories.php" class="m-2">Add categories</a>
+            <a href="add-expenses.php" class="m-2">Add expenses</a>
+        </div>
         <div class="row">
             <div class="col card m-5">
                 <h3>Incomes</h3>
@@ -17,9 +22,9 @@
                     <thead>
                         <tr>
                             <th scope="col">Nr.</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Value</th>
+                            <th scope="col">Note</th>
+                            <th scope="col">Date</th>
                         </tr>
                     </thead>
                     <tbody>

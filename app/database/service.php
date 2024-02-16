@@ -6,11 +6,19 @@
  * @return bool
  */
 function validateSize($string, $maxSize){
-    if(strlen($string) <= 0 || strlen($string) >= $maxSize){
-        return true;
+    if(strlen($string) >= 4 && strlen($string) <= $maxSize){
+        return false;
     }
 
-    return false;
+    return true;
+}
+
+function validateFloatSize($value, $maxSize){
+    if($value > 0 && $value < $maxSize){
+        return false;
+    }
+
+    return true;
 }
 
 /**
